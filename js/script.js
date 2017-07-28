@@ -28,9 +28,11 @@ document.querySelectorAll('.cell').forEach(function(cell, index)
 
 document.getElementById('password').addEventListener('keyup', function(e)
 {
-    var input_array;
+    e.preventDefault();
+    e.stopPropagation();
+
     var input = this.value.toUpperCase();
-    input_array = input.split("");
+    var input_array = input.split("");
     var has_error = false;
     var duplicte = [];
     var map = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
@@ -61,4 +63,29 @@ document.getElementById('password').addEventListener('keyup', function(e)
     {
         password.classList.remove('error');
     }
+});
+
+document.addEventListener('keyup', function(e)
+{
+    var map = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+    var key = e.key.toUpperCase();
+    var index = map.indexOf(key);
+
+    var input = document.getElementById('password').value.toUpperCase();
+    var input_array = input.split("");
+    var has_error = false;
+    var duplicte = [];
+
+    if (index > -1)
+    {
+        check_memory(key);
+    }
+    else if (key == 'ESCAPE')
+    {
+        document.getElementById('password').value = "";
+    }
+    else if (key == 'BACKSPACE')
+    {}
+    else if (key == 'ENTER')
+    {}
 });
