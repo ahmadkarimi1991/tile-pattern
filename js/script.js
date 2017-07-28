@@ -2,7 +2,7 @@ function check_memory(number)
 {
     // Memory management
     var memory = document.getElementById('password').value.split("");
-    var memory_index; = memory.indexOf(number);
+    var memory_index = memory.indexOf(number);
     if (memory_index > -1)
     {
         memory.splice(memory_index, 1);
